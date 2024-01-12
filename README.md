@@ -21,45 +21,58 @@ Zeigen Sie, wie das Projekt verwendet wird. Erklären Sie die verschiedenen Funk
 
 ```bash
 # Entwickeln auf Feature-Branches
-# Überprüfe den Status meiner Branches
+# Dokumentationsupdates auf docs/update-readme
+# Erstellen eines Branches für Dokumentationsupdates:
 git branch -a
 git log --oneline --graph --all
-# Neuen Branch und wechseln
-git checkout -b dev
-# Branch wechseln
 git checkout dev
-# Branch erstellen
-git branch feature/new-feature-system
-git branch bugfix/new-feature-systemn-error
-git branch docs/update-readme
-# Branch wechseln
-git checkout docs/update-readme
+git checkout -b docs/update-readme
 
-# Änderungen hinzufügen und committen
+# Durchführen von Änderungen an der Dokumentation:
 vim README.md
+vim .gitignore
 git add .
-git commit -m"update README - Verwendung"
+git commit -m "Update README und .gitignore mit neuen Informationen"
 git status
-# Aktualisieren - Änderungen Pushen
-git push origin docs/update-readme
-git log --oneline --graph --all
 
-# Einen Pull Request Erstellen, Mergen, Repository Aktualisieren, Aufräumen
-# Pull Request erstellen
-gh pr create --base main --title "Update README" --body "Meine ersten Änderungen - Hallo Welt"
-# Pull Request nach Überprüfung mergen
-# Code fehlerfrei? Teste Änderungen, bevor in den dev Branch mergen
-gh pr merge docs/update-readme
-    # ? What merge method would you like to use? Create a merge commit (=> Commits werden vom Branch in Hauptbranch gemergt.)
-    # ? Delete the branch locally and on GitHub? No (=> nicht löschen)
-    # ? What's next? Submit  (=> Bestätigen und den Merge-Prozess abschließen)
-# Aktualisieren - Lokales Repository mit dem Hauptbranch synchronisieren
-git checkout main
+# Pushen des Dokumentationsbranches:
+git push --set-upstream origin docs/update-readme
+
+# Erstellen eines Pull Requests von `dev` nach `main`
+# Mergen des Dokumentationsbranches in `dev`:
+git checkout dev
 git pull origin main
-git log --oneline --graph --all
-# Aufräumen - Lokalen und Remote Branch löschen
+git merge docs/update-readme
+git push origin dev
+
+# Erstellen des Pull Requests von `dev` nach `main`:
+gh pr create --base main --head dev --title "Aktualisierung der Dokumentation" --body "Fügt detaillierte Informationen zur README hinzu."
+
+# Merge des Pull Requests:
+# Liste aller offenen Pull Requests anzeigen [PR-Nummer]
+gh pr list
+gh pr view 2
+#gh pr view 2 --web
+# Code-Review durchführen
+# Genehmigen eines Pull Requests
+gh pr review 2 --approve
+# PR ablehnen
+#gh pr review 2 --request-changes "Bitte Code überprüfen"
+gh pr merge 2
+gh pr view 2
+# Löschen des Feature-Branches:
 git branch -d docs/update-readme
 git push origin --delete docs/update-readme
+git branch -a
+git log --oneline --graph --all
+
+# Regelmäßige Updates und Synchronisation
+git checkout main
+git pull origin main
+git checkout dev
+git push origin dev
+git merge main
+git branch -a
 git log --oneline --graph --all
 ```
 
