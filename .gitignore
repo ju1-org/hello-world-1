@@ -1,0 +1,68 @@
+# .gitignore
+# Ignorieren von Log-Dateien
+*.log
+
+# Ignorieren von Artefakten der Build-Prozesse
+/build/
+/dist/
+/out/
+
+# Ignorieren von Systemdateien
+.DS_Store
+Thumbs.db
+
+# Ignorieren von IDE-spezifischen Dateien
+/.idea/
+/.vscode/
+*.swp
+*~
+
+# Ignorieren von Node-Modulen in JavaScript-Projekten
+/node_modules/
+
+# Ignorieren von Umgebungsdateien
+.env
+.env.local
+
+# Ignorieren von LaTeX-spezifischen Dateien
+*.aux
+*.out
+*.toc
+*.log
+*.fls
+*.fdb_latexmk
+
+# Ignorieren von Python-spezifischen Dateien
+__pycache__/
+*.py[cod]
+*.pyo
+*.pyd
+.Python
+.venv/
+env/
+venv/
+ENV/
+env.bak/
+venv.bak/
+
+# Ignorieren von HTML/CSS/JavaScript-spezifischen Dateien
+*.map
+*.css.map
+*.js.map
+
+# Ignorieren von C/C++-spezifischen Dateien
+*.o
+*.obj
+*.exe
+*.dll
+*.so
+*.dylib
+
+# Ignorieren von Bash-spezifischen Dateien
+*.sh~
+
+# Allgemeine Dateien, die oft ignoriert werden
+*.bak
+*.tmp
+*.temp
+
